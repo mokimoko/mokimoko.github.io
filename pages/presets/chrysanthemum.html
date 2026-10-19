@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chrysanthemum | Moki</title>
+    <title>Chrysanthemum 2.0.0 | Moki</title>
     <link rel="stylesheet" href="../../css/style.css">
     <style>
         /* ── Page Layout ────────────────────────────── */
@@ -141,6 +141,29 @@
             white-space: nowrap;
             flex-shrink: 0;
             padding: 0.7rem 1.8rem;
+        }
+
+        .older-versions {
+            margin-top: 1rem;
+            font-family: var(--font-h2);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            opacity: 0.4;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .older-versions a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease, opacity 0.2s ease;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 1px;
+        }
+
+        .older-versions a:hover {
+            color: var(--accent);
+            opacity: 1;
         }
 
         /* ── Models / Parameters ────────────────────── */
@@ -312,10 +335,9 @@
             </div>
             <div class="preset-hero-meta">
                 <div class="preset-eyebrow">SillyTavern Preset</div>
-                <h1>Chrysanthemum</h1>
-                <div class="tagline">A simpler sibling to White Lotus — markdown-organized, built for one-on-one RP, with a voice of its own.</div>
+                <h1>Chrysanthemum 2.0.0</h1>
+                <div class="tagline">A simpler sibling to White Lotus, built for one-on-one RP and characters with agendas of their own.</div>
                 <div class="divider"></div>
-                <p>Same structure I liked in White Lotus, stripped down. Fewer toggles, writing style baked in, less to fuss with.</p>
             </div>
         </div>
 
@@ -323,10 +345,13 @@
         <div class="download-area">
             <div class="download-bar">
                 <div class="download-info">
-                    <div class="file-name">Chrysanthemum [1.0.0].json</div>
-                    <div class="file-meta">Latest &nbsp;·&nbsp; SillyTavern Preset &nbsp;·&nbsp; JSON</div>
+                    <div class="file-name">chrysanthemum-latest.json</div>
+                    <div class="file-meta">v2.0.0 &nbsp;·&nbsp; Latest &nbsp;·&nbsp; SillyTavern Preset &nbsp;·&nbsp; JSON</div>
                 </div>
-                <a href="../../downloads/presets/Chrysanthemum [1.0.0].json" download class="btn" style="margin-top:0;">Download</a>
+                <a href="../../downloads/presets/chrysanthemum-latest.json" download class="btn" style="margin-top:0;">Download</a>
+            </div>
+            <div class="older-versions">
+                <a href="chrysanthemum-changelog.html">Changelog</a> &nbsp;|&nbsp; Previous: <a href="../../downloads/presets/Chrysanthemum%20%5B1.0.0%5D.json" download>v1.0.0</a>
             </div>
         </div>
 
@@ -337,10 +362,10 @@
                 Chrysanthemum is an alternative to my <a href="white-lotus.html">White Lotus</a> preset. I liked how White Lotus was structured, but I wanted something simpler — so this is that. Same general goal, less machinery.
             </p>
             <p>
-                The biggest difference under the hood is that Chrysanthemum organizes everything with markdown rather than XML tags, and the writing style is baked directly into the prompt instead of living behind a pile of switches. The result is a preset with a distinct "feel" of its own — noticeably different from White Lotus, in a good way.
+                2.0 switches from markdown to XML and puts most of the character instructions in a <strong>Contract</strong>. The focus is on characters behaving like people: having their own priorities, getting things wrong, keeping things to themselves, and doing something besides waiting for {{user}} to tell them what happens next.
             </p>
             <p>
-                It's tailored for one-on-one roleplay, so most of the setup you'd normally fiddle with is already handled. Load it, drop in your character, and go.
+                It doesn't prescribe a particular author's style. By default, narration is third person, past tense, limited to what {{user}} can perceive, with a tone suited to the POV character. It's still built for one-on-one roleplay, and it doesn't require the Experimental Macro Engine.
             </p>
         </div>
 
@@ -349,21 +374,57 @@
             <div class="section-label">What's Inside</div>
 
             <div class="feature-group">
-                <div class="feature-group-title">The Two Toggles</div>
+                <div class="feature-group-title">Characters With Their Own Priorities</div>
                 <p>
-                    Chrysanthemum keeps it lean — there are really only two toggles worth touching: <strong>NSFW</strong> and <strong>User Autonomy</strong>. You can happily leave both on all the time. The preset is tuned for one-on-one RP, and User Autonomy is what keeps the model from grabbing the wheel and writing {{user}} for you.
+                    The <strong>Contract</strong> covers character autonomy, relationships, knowledge boundaries, and keeping the world physically consistent. Characters can be selfish, mistaken, or unhelpful. Being close doesn't mean they suddenly explain all their feelings, and {{user}} isn't automatically the center of everyone's world.
                 </p>
                 <p>
-                    If you'd rather let the model write for {{user}} too — narrating both sides — just flip User Autonomy off. NSFW does what it says on the tin; toggle it as needed.
+                    Dialogue takes its vocabulary from the setting and time period, and characters can speak differently depending on who they're talking to. The goal is to move the scene through their own choices, without every turn becoming polished banter or a recap of what you just wrote.
                 </p>
             </div>
 
             <div class="feature-group">
-                <div class="feature-group-title">Baked-In Style</div>
+                <div class="feature-group-title">The Toggles</div>
                 <p>
-                    Unlike White Lotus, the writing style here isn't a menu — it's built into the prompt. If you ever want to tweak it, the instructions are split across two spots: the <strong>Main Prompt</strong> holds the style, and <strong>Turn Start</strong> handles length and structure. Edit those and the whole voice shifts.
+                    <strong>NSFW On</strong> adds the explicit-content instructions. <strong>Write for User</strong> lets the model write {{user}}'s actions, thoughts, and dialogue too; leave it off if you're playing your own persona. This replaces the old User Autonomy switch, so the direction is reversed: turn this one <em>on</em> to hand over control.
+                </p>
+                <p>
+                    <strong>Length</strong> has Short (at most one paragraph), Average (2–4 paragraphs), Long (7–10), and Flexible (whatever the scene needs). Average is selected in the download. Enable only ONE length option at a time — turn off the current one before choosing another.
+                </p>
+                <p>
+                    <strong>Guidance</strong> contains prose examples to steer the model away from common annoyances. Turn it off if you'd rather save those tokens. There's also an optional <strong>Jailbreak</strong>, originally made for MiMo 2.5; I can't promise the same results on other models. YMMV.
                 </p>
             </div>
+
+            <div class="feature-group">
+                <div class="feature-group-title">Tweaking It</div>
+                <p>
+                    The <strong>Contract</strong> holds the characterization rules, <strong>Speaking Style</strong> handles dialogue, and <strong>Turn Start</strong> handles tense, formatting, and how the next reply continues the scene. The built-in Main Prompt slot is empty and off by default. Leave <strong>Reset Variables</strong> enabled so the options reset correctly when you change them.
+                </p>
+            </div>
+        </div>
+
+        <!-- Models / Parameters -->
+        <div class="models-block">
+            <div class="section-label">Models / Parameters</div>
+            <p class="models-note">I primarily use Kimi, GLM, and MiMo, so those are the model families this was tested on. These are the settings saved in the download; adjust them for your model and context needs.</p>
+            <div class="model-row">
+                <div class="model-name">Included Settings</div>
+                <div class="model-params">
+                    Temperature <span>1</span> &nbsp;·&nbsp; Top P <span>0.95</span> &nbsp;·&nbsp; Top K <span>40</span><br>
+                    Context <span>50,000</span> &nbsp;·&nbsp; Max response <span>5,000 tokens</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- How To Use -->
+        <div class="howto-block">
+            <div class="section-label">How To Use</div>
+            <ol class="howto-list">
+                <li><span class="step-num">01</span><span>Download the JSON and import it as a Chat Completion preset in SillyTavern.</span></li>
+                <li><span class="step-num">02</span><span>Check your model and context settings, then choose a length and the options you want.</span></li>
+                <li><span class="step-num">03</span><span>Leave Write for User off to keep control of your persona. Load your character and go.</span></li>
+            </ol>
         </div>
 
     </main>
